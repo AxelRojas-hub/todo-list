@@ -8,23 +8,8 @@ import { Header } from './components/Header';
 const todosTest =[
   {
   id:'1',
-  title: 'Estudiar base de datos para el martes',
+  title: 'Tarea 1',
   completed:false
-},
-{
-  id:'2',
-  title: 'Estudiar estadistica para el viernes',
-  completed:false
-},
-{
-  id:'3',
-  title: 'TP4 POO',
-  completed:false
-},
-{
-  id:'4',
-  title: 'Sobrevivir',
-  completed:true
 }]
 
 const App = ():JSX.Element=> {
