@@ -370,7 +370,6 @@ html .clear-completed:active {
     text-decoration: underline;
 }
 .do-title {
-    font-weight: bolder;
     background-clip: text;
     background: linear-gradient(187deg,
                 #42d392,
