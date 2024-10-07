@@ -1,42 +1,43 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Todos} from './components/Todos';
 import { FilterVal, type Todo, type TodoID , type TodoTitle} from './types';
 import { TODO_FILTERS } from './consts';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
-const todosTest =[
-  {
-  id:'1',
-  title: 'Tarea 1',
-  completed:false
-}]
 
+const saveTodosToLocalStorage = (todos:Todo[]):void=>{
+  localStorage.setItem('todos',JSON.stringify(todos))
+}
+
+const loadTodosFromLocalStorage = (): Todo[]=>{
+  const todos = localStorage.getItem('todos');
+  return todos? JSON.parse(todos):[];
+}
 const App = ():JSX.Element=> {
-  const [todos,setTodos] = useState(todosTest)
+  const [todos,setTodos] = useState<Todo[]>(loadTodosFromLocalStorage())
   const [filterSelected,setFilterSelected] = useState<FilterVal>(TODO_FILTERS.ALL)
+  
+  useEffect(()=>{
+    saveTodosToLocalStorage(todos);
+  },[todos]);
+
   const handleRemove = ({id}:TodoID):void =>{
     const newTodos = todos.filter(todo=>todo.id != id)
     setTodos(newTodos)
   }
 
-  const handleCompleted = (
-    {id,completed}:Pick<Todo,'id'|'completed'>):void =>{
-    const newTodos = todos.map(todo=>{
-      if(todo.id == id){
-        return{
-          ...todo,
-          completed
-        }
-      }
-      return todo
-    })
-    setTodos(newTodos)
-  }
+    const handleCompleted = ({ id }: TodoID): void => {
+    const newTodos = todos.map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
+    setTodos(newTodos);
+  };
 
 const handleFilterChange = (filter: FilterVal):void =>{
   setFilterSelected(filter)
 }
+
 const handleRemoveAllCompleted = ():void=>{
   const newTodos = todos.filter(todo=>!todo.completed)
   setTodos(newTodos)

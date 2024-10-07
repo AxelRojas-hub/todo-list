@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import { TodoTitle } from "../types"
 import {CreateTodo} from './CreateTodo'
 interface Props{
@@ -8,7 +8,7 @@ interface Props{
 export const Header: React.FC<Props> = ({onAddTodo})=>{
     return (
         <header className="header" >
-            <h1>To Do App</h1>
+            <h1 ><span className="do-title">toDo</span></h1>
             <CreateTodo saveTodo={onAddTodo}/>
         </header>
 

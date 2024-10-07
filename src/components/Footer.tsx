@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Filters } from "./Filter";
 import { FilterVal } from "../types";
 
@@ -16,7 +16,7 @@ export const Footer: React.FC<Props>=({
     filterSelected,
     handleFilterChange,
     onClearCompleted
-}) =>{
+}: Props) =>{
     return (
         <footer className="footer"> 
             <span className="todo-count">

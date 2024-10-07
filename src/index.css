@@ -369,11 +369,17 @@ html .clear-completed:active {
 .info a:hover {
     text-decoration: underline;
 }
+.do-title {
+    font-weight: bolder;
+    background-clip: text;
+    background: linear-gradient(187deg,
+                #42d392,
+                #3398DB);
+    text-shadow: rgba(66, 211, 146, 1) 0px 0px 73px;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
 
-/*
-	Hack to remove background from Mobile Safari.
-	Can't use it globally since it destroys checkboxes in Firefox
-*/
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 
     .toggle-all,
